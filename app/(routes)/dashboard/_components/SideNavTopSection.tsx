@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 
 type Props = {
   user: any;
+  setActiveTeamInfo: any;
 };
 
 export interface Team {
@@ -24,7 +25,7 @@ export interface Team {
   _id: String;
 }
 
-const SideNavTopSection = ({ user }: Props) => {
+const SideNavTopSection = ({ user, setActiveTeamInfo }: Props) => {
   const router = useRouter();
   const convex = useConvex();
   const [activeTeam, setActiveTeam] = useState<Team>();
@@ -33,6 +34,10 @@ const SideNavTopSection = ({ user }: Props) => {
   useEffect(() => {
     user && getTeamList();
   }, [user]);
+
+  useEffect(() => {
+    activeTeam ? setActiveTeamInfo(activeTeam) : null;
+  }, [activeTeam]);
 
   const getTeamList = async () => {
     const result = await convex.query(api.teams.getTeam, {
