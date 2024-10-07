@@ -1,14 +1,22 @@
 import React from "react";
-import SideNavTopSection from "./SideNavTopSection";
+import SideNavTopSection, { Team } from "./SideNavTopSection";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import SideNavBottomSection from "./SideNavBottomSection";
 
 type Props = {};
 
 const SideNav = (props: Props) => {
   const { user }: any = useKindeBrowserClient();
   return (
-    <div className="bg-slate-100 h-screen fixed w-72 border-r p-6">
-      <SideNavTopSection user={user}/>
+    <div className=" h-screen fixed w-72 borde-r border-[1px] p-6 flex flex-col">
+      <div className="flex-1">
+        <SideNavTopSection user={user} />
+      </div>
+
+      <div>
+        <SideNavBottomSection
+        />
+      </div>
     </div>
   );
 };
