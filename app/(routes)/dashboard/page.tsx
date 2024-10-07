@@ -4,6 +4,7 @@ import { api } from "@/convex/_generated/api";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex, useMutation, useQuery } from "convex/react";
 import React, { useEffect } from "react";
+import FileList from "./_components/FileList";
 
 type Props = {};
 
@@ -32,7 +33,11 @@ const Dashboard = (props: Props) => {
     }
   };
 
-  return <div>Dashboard</div>;
+  return (
+    <div className="p-8">
+      <FileList />
+    </div>
+  );
 };
 
 export default Dashboard;
